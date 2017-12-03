@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Cardistrict{% endblock %}
+{% block head %}
+  {% load staticfiles %}
+{% endblock %}
+{% block body %}
+  <div class="container-fluid bg-blanco2 my-5 d-flex flex-column animated fadeIn" style="text-align:center;">
+    <h4>Registro</h4>
+    <div class="row justify-content-center">
+      <div class="col-6 ct-registrar mt-3">
+        <form method="POST" class="d-flex flex-column" style="text-align: center;" enctype="multipart/form-data">
+          {% csrf_token %}
+          <form-group>
+            <input class="form-control btn anim" name="username" placeholder="Usuario" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input type="password" class="form-control btn anim" name="password1" placeholder="Contrasena" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input type="password" class="form-control btn anim" name="password2" placeholder="Repite Contrasena" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input class="form-control btn my-3 anim" name="nombre" placeholder="Nombre" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input class="form-control btn anim" name="apellidoP" placeholder="Apellido paterno" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input class="form-control btn my-3 anim" name="apellidoM" placeholder="Apellido materno" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input class="form-control btn anim" name="tiempoPracticando" placeholder="Tiempo practicando" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <textarea class="form-control btn my-3 anim" name="movimientosFavoritos" placeholder="Movimientos favoritos" style="width: 250px;"></textarea>
+          </form-group>
+          <form-group>
+            <textarea class="form-control btn anim" name="movimientosOriginales" placeholder="Movimientos originales" style="width: 250px;"></textarea>
+          </form-group>
+          <form-group>
+            <input class="form-control btn my-3 anim" name="imagen" id="subir-imagen" type="file" accept="image/*" style="color: #666666;width: 250px;">
+          </form-group>
+          <form-group>
+            <input class="form-control btn anim" name="ciudad" placeholder="Ciudad" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input class="form-control btn my-3 anim" name="correo" placeholder="Correo" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input class="form-control btn anim" name="youtube" placeholder="Youtube" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input class="form-control btn my-3 anim" name="instagram" placeholder="Instagram" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input class="form-control btn anim" name="reddit" placeholder="Reddit" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input type="submit" class="btn btn-contrib-send anim mt-5" name="register" placeholder="Registrarse" style="width: 250px;">
+          </form-group>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

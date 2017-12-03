@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Cardistrict{% endblock %}
+{% block head %}
+  {% load staticfiles %}
+{% endblock %}
+{% block body %}
+  <div class="container-fluid bg-blanco2 my-5 d-flex flex-column animated fadeIn" style="text-align:center;">
+    <h4>Iniciar sesion</h4>
+    <div class="row justify-content-center">
+      <div class="col-6 ct-registrar mt-3">
+        {% if form.errors %}
+            <p>Tu usuario y contraseña no coinciden, por favor vuelva a intentarlo:</p>
+        {% endif %}
+        <form method="POST" class="d-flex flex-column" style="text-align: center;">
+          {% csrf_token %}
+          <form-group>
+            <input type="text" class="form-control btn mt-3 anim" name="username" placeholder="Usuario" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <input type="password" class="form-control btn my-3 anim" name="password" placeholder="Contrasena" style="width: 250px;">
+          </form-group>
+          <form-group>
+            <button type="submit" class="btn btn-contrib-send anim" style="width: 250px; ;"> Iniciar sesion</button>
+          </form-group>
+          <div class="container-fluid mt-3" style="width: 250px; text-align: center;"><a class="btn anim" type="button" style=" color: #46C9CC;" href="/signup/">Registrarse</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endblock %}

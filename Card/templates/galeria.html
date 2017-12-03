@@ -1,0 +1,478 @@
+{% extends "base.html" %}
+{% block title %}Galeria{% endblock %}
+{% load staticfiles %}
+{% block head %}
+  <!-- Bootstrap -->
+  <link href="{% static 'css/docs.css' %}" rel="stylesheet">
+  <link href="{% static 'gall/css/unite-gallery.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div class="container-fluid bg-azul py-4 animated slideInDown" id="menu-galeria">
+      <div class="container d-flex justify-content-center align-items-center">
+        <span class="p1">Ordenar por</span>
+        <a class="nav-link dropdown-toggle a-categorias" id="dropdown10" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mas recientes</a>
+        <div class="dropdown-menu px-5" aria-labelledby="dropdown10">
+          <a class="dropdown-item text-azul" href="#">Mas antiguos</a>
+        </div>
+        <button class="btn btn-contrib px-5 cambio" data-toggle="modal" data-target="#subir-Modal">Subir</button>
+        <button class="btn btn-contrib mx-3 fu" value="Toggle Fullscreen" onclick="api.enterFullscreen()">Fullscreen </button>
+      </div>
+    </div>
+    <!--Pop-up subir-->
+      <div class="modal fade" id="subir-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+          <div class="modal-content" id="mod-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Subir</h5>
+              <button class="close x-close" type="button" data-dismiss="modal" aria-label="Close">
+                <i class="fa fa-times" aria-hidden="true"></i>
+              </button>
+            </div>
+            <!-- SUBIR IMAGENES: -->
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="modal-body px-4">
+                <p class="text-justify">Comparte tus imagenes con buena resolution para integrarlos a la galeria y que otros Cardists puedan disfrutar de ella.</p>
+                <div class="form-group">
+                  <input name="titulo" class="form-control" id="subir-titulo" type="text" placeholder="Titulo">
+                </div>
+                <div class="form-group">
+                  <input name="descripcion" class="form-control" id="subir-descripcion" type="text" placeholder="Descripcion">
+                </div>
+                <h5>Imagen</h5>
+                <label class="custom-file-upload">
+                  <input name="imagenGaleria" class="form-control" id="subir-imagen" type="file" accept="image/*" style="color: #666666;">
+                </label>
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-close" type="submit" data-dismiss="modal">Cerrar</button>
+                <button class="btn btn-contrib-send" type="submit">Enviar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <!-- SUBIR IMAGENES: -->
+    <div class="container-fluid py-5 mt-3">
+      <div class="gal" id="gallery_1" style="display:none;">
+        <a href="">
+          <img alt="Lemon Piercier" src="../static/img/wallpapers/1 (1).jpg" data-description="TSnowe" style="display:none;"></a>
+        <a href="">
+          <img alt="Peppers" src="../static/img/wallpapers/1 (1).png" data-description="Those are peppers" style="display:none;"></a>
+        <a href="">
+          <img alt="Keys" src="../static/img/wallpapers/1 (10).jpg" data-description="Those are keys" style="display:none;"></a>
+        <a href="">
+          <img alt="Friuts in cup" src="../static/img/wallpapers/1 (11).jpg" data-description="Those are friuts in a cup" style="display:none;"></a>
+        <a href="">
+          <img alt="Yellow Flowers" src="../static/img/wallpapers/1 (12).jpg" data-description="Those are yellow flowers" style="display:none;"></a>
+        <a href="">
+          <img alt="Butterfly" src="../static/img/wallpapers/1 (13).jpg" data-description="This is butterfly" style="display:none;"></a>
+        <a href="">
+          <img alt="Boat" src="../static/img/wallpapers/1 (14).jpg" data-description="This is a boat" style="display:none;"></a>
+        <a href="">
+          <img alt="Woman" src="../static/img/wallpapers/1 (15).jpg" data-description="This is a woman" style="display:none;"></a>
+        <a href="">
+          <img alt="Cup Of Coffee" src="../static/img/wallpapers/1 (16).jpg" data-description="This is cup of coffee" style="display:none;"></a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/img/wallpapers/1 (17).jpg" data-description="This is iphone back" style="display:none;"></a>
+        <a href="">
+          <img alt="Lemon Slice" src="../static/img/wallpapers/1 (18).jpg" data-description="This is a Lemon Slice" style="display:none;"></a>
+        <a href="">
+          <img alt="Peppers" src="../static/img/wallpapers/1 (19).jpg" data-description="Those are peppers" style="display:none;"></a>
+        <a href="">
+          <img alt="Keys" src="../static/img/wallpapers/1 (20).jpg" data-description="Those are keys" style="display:none;"></a>
+        <a href="">
+          <img alt="Friuts in cup" src="../static/img/wallpapers/2 (1).jpeg" data-description="Those are friuts in a cup" style="display:none;"></a>
+        <a href="">
+          <img alt="Yellow Flowers" src="../static/img/wallpapers/2 (1).jpg" data-description="Those are yellow flowers" style="display:none;"></a>
+        <a href="">
+          <img alt="Butterfly" src="../static/img/wallpapers/2 (1).png" data-image="../static/gall/images/big/tile6.jpg" data-description="This is butterfly" style="display:none;"></a>
+        <a href="">
+          <img alt="Boat" src="../static/img/wallpapers/2 (10).jpg" data-description="This is a boat" style="display:none;"></a>
+        <a href="">
+          <img alt="Woman" src="../static/img/wallpapers/2 (11).jpg" data-description="This is a woman" style="display:none;"></a>
+        <a href="">
+          <img alt="Cup Of Coffee" src="../static/img/wallpapers/2 (12).jpg" data-description="This is cup of coffee" style="display:none;"></a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/img/wallpapers/2 (13).jpg" data-description="This is iphone back" style="display:none;"></a>
+        <a href="">
+          <img alt="Lemon Slice" src="../static/img/wallpapers/2 (14).jpg" data-description="This is a Lemon Slice" style="display:none;"></a>
+        <a href="">
+          <img alt="Peppers" src="../static/img/wallpapers/2 (15).jpg" data-description="Those are peppers" style="display:none;"></a>
+        <a href="">
+          <img alt="Keys" src="../static/img/wallpapers/2 (16).jpg" data-description="Those are keys" style="display:none;"></a>
+        <a href="">
+          <img alt="Friuts in cup" src="../static/img/wallpapers/2 (17).jpg" data-description="Those are friuts in a cup" style="display:none;"></a>
+        <a href="">
+          <img alt="Yellow Flowers" src="../static/img/wallpapers/2 (18).jpg" data-description="Those are yellow flowers" style="display:none;"></a>
+        <a href="">
+          <img alt="Butterfly" src="../static/img/wallpapers/1 (19).jpg" data-description="This is butterfly" style="display:none;"></a>
+        <a href="">
+          <img alt="Boat" src="../static/img/wallpapers/2 (20).jpg" data-description="This is a boat" style="display:none;"></a>
+        <a href="">
+          <img alt="Woman" src="../static/img/wallpapers/2 (21).jpg" data-description="This is a woman" style="display:none;"></a>
+        <a href="">
+          <img alt="Cup Of Coffee" src="../static/img/wallpapers/2 (22).jpg" data-description="This is cup of coffee" style="display:none;"></a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/img/wallpapers/2 (23).jpg" data-description="This is iphone back" style="display:none;"></a>
+        <a href="">
+          <img alt="Lemon Slice" src="../static/img/wallpapers/2 (24).jpg" data-description="This is a Lemon Slice" style="display:none;"></a>
+        <a href="">
+          <img alt="Peppers" src="../static/img/wallpapers/2 (25).jpg" data-description="Those are peppers" style="display:none;"></a>
+        <a href="">
+          <img alt="Keys" src="../static/img/wallpapers/2 (26).jpg" data-description="Those are keys" style="display:none;"></a>
+        <a href="">
+          <img alt="Friuts in cup" src="../static/img/wallpapers/2 (27).jpg" data-description="Those are friuts in a cup" style="display:none;"></a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/gall/images/thumbs/tile10.jpg" data-image="../static/gall/images/big/tile10.jpg" data-description="This is iphone back" style="display:none;"></a>
+        <a href="">
+          <img alt="Boat" src="../static/gall/images/thumbs/tile7.jpg" data-image="../static/gall/images/big/tile7.jpg" data-description="This is a boat" style="display:none;"></a>
+        <a href="">
+          <img alt="Woman" src="../static/gall/images/thumbs/tile8.jpg" data-image="../static/gall/images/big/tile8.jpg" data-description="This is a woman" style="display:none;"></a>
+        <a href="">
+          <img alt="Cup Of Coffee" src="../static/gall/images/thumbs/tile9.jpg" data-image="../static/gall/images/big/tile9.jpg" data-description="This is cup of coffee" style="display:none;"></a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/gall/images/thumbs/tile10.jpg" data-image="../static/gall/images/big/tile10.jpg" data-description="This is iphone back" style="display:none;"></a>
+        <a href="">
+          <img alt="Boat" src="../static/gall/images/thumbs/tile7.jpg" data-image="../static/gall/images/big/tile7.jpg" data-description="This is a boat" style="display:none;"></a>
+        <a href="">
+          <img alt="Woman" src="../static/gall/images/thumbs/tile8.jpg" data-image="../static/gall/images/big/tile8.jpg" data-description="This is a woman" style="display:none;"></a>
+        <a href="">
+          <img alt="Cup Of Coffee" src="../static/gall/images/thumbs/tile9.jpg" data-image="../static/gall/images/big/tile9.jpg" data-description="This is cup of coffee" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/gall/images/thumbs/tile10.jpg" data-image="../static/gall/images/big/tile10.jpg" data-description="This is iphone back" style="display:none;">
+        </a>
+      </div>
+      <div id="gallery_2" style="display:none;">
+        <a href="">
+          <img alt="Lemon Piercier" src="../static/img/wallpapers/1 (1).jpg" data-description="TSnowe" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Peppers" src="../static/img/wallpapers/1 (1).png" data-description="Those are peppers" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Keys" src="../static/img/wallpapers/1 (10).jpg" data-description="Those are keys" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Friuts in cup" src="../static/img/wallpapers/1 (11).jpg" data-description="Those are friuts in a cup" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Yellow Flowers" src="../static/img/wallpapers/1 (12).jpg" data-description="Those are yellow flowers" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Butterfly" src="../static/img/wallpapers/1 (13).jpg" data-description="This is butterfly" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Boat" src="../static/img/wallpapers/1 (14).jpg" data-description="This is a boat" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Woman" src="../static/img/wallpapers/1 (15).jpg" data-description="This is a woman" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Cup Of Coffee" src="../static/img/wallpapers/1 (16).jpg" data-description="This is cup of coffee" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/img/wallpapers/1 (17).jpg" data-description="This is iphone back" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Lemon Slice" src="../static/img/wallpapers/1 (18).jpg" data-description="This is a Lemon Slice" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Peppers" src="../static/img/wallpapers/1 (19).jpg" data-description="Those are peppers" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Keys" src="../static/img/wallpapers/1 (20).jpg" data-description="Those are keys" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Friuts in cup" src="../static/img/wallpapers/2 (1).jpeg" data-description="Those are friuts in a cup" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Yellow Flowers" src="../static/img/wallpapers/2 (1).jpg" data-description="Those are yellow flowers" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Butterfly" src="../static/img/wallpapers/2 (1).png" data-image="../static/gall/images/big/tile6.jpg" data-description="This is butterfly" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Boat" src="../static/img/wallpapers/2 (10).jpg" data-description="This is a boat" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Woman" src="../static/img/wallpapers/2 (11).jpg" data-description="This is a woman" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Cup Of Coffee" src="../static/img/wallpapers/2 (12).jpg" data-description="This is cup of coffee" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/img/wallpapers/2 (13).jpg" data-description="This is iphone back" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Lemon Slice" src="../static/img/wallpapers/2 (14).jpg" data-description="This is a Lemon Slice" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Peppers" src="../static/img/wallpapers/2 (15).jpg" data-description="Those are peppers" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Keys" src="../static/img/wallpapers/2 (16).jpg" data-description="Those are keys" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Friuts in cup" src="../static/img/wallpapers/2 (17).jpg" data-description="Those are friuts in a cup" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Yellow Flowers" src="../static/img/wallpapers/2 (18).jpg" data-description="Those are yellow flowers" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Butterfly" src="../static/img/wallpapers/1 (19).jpg" data-description="This is butterfly" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Boat" src="../static/img/wallpapers/2 (20).jpg" data-description="This is a boat" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Woman" src="../static/img/wallpapers/2 (21).jpg" data-description="This is a woman" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Cup Of Coffee" src="../static/img/wallpapers/2 (22).jpg" data-description="This is cup of coffee" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/img/wallpapers/2 (23).jpg" data-description="This is iphone back" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Lemon Slice" src="../static/img/wallpapers/2 (24).jpg" data-description="This is a Lemon Slice" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Peppers" src="../static/img/wallpapers/2 (25).jpg" data-description="Those are peppers" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Keys" src="../static/img/wallpapers/2 (26).jpg" data-description="Those are keys" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Friuts in cup" src="../static/img/wallpapers/2 (27).jpg" data-description="Those are friuts in a cup" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/gall/images/thumbs/tile10.jpg" data-image="../static/gall/images/big/tile10.jpg" data-description="This is iphone back" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Boat" src="../static/gall/images/thumbs/tile7.jpg" data-image="../static/gall/images/big/tile7.jpg" data-description="This is a boat" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Woman" src="../static/gall/images/thumbs/tile8.jpg" data-image="../static/gall/images/big/tile8.jpg" data-description="This is a woman" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Cup Of Coffee" src="../static/gall/images/thumbs/tile9.jpg" data-image="../static/gall/images/big/tile9.jpg" data-description="This is cup of coffee" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/gall/images/thumbs/tile10.jpg" data-image="../static/gall/images/big/tile10.jpg" data-description="This is iphone back" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Boat" src="../static/gall/images/thumbs/tile7.jpg" data-image="../static/gall/images/big/tile7.jpg" data-description="This is a boat" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Woman" src="../static/gall/images/thumbs/tile8.jpg" data-image="../static/gall/images/big/tile8.jpg" data-description="This is a woman" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Cup Of Coffee" src="../static/gall/images/thumbs/tile9.jpg" data-image="../static/gall/images/big/tile9.jpg" data-description="This is cup of coffee" style="display:none;">
+        </a>
+        <a href="">
+          <img alt="Iphone Back" src="../static/gall/images/thumbs/tile10.jpg" data-image="../static/gall/images/big/tile10.jpg" data-description="This is iphone back" style="display:none;">
+        </a>
+      </div>
+    </div>
+    <!-- footer-->
+  {% endblock %}
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins)-->
+{% block script %}
+
+<script src="{% static 'gall/js/unitegallery.js' %}">   </script>
+
+
+<script src="{% static 'gall/themes/grid/ug-theme-grid.js' %}"> </script>
+<script src="{% static 'gall/themes/tilesgrid/ug-theme-tilesgrid.js' %}"> </script>
+<!--El script que contendra lo de unitegallery debera ir aqui abajo, pendiente: hallar forma de usar el script en un archivo, no aqui abajo-->
+
+<script type="text/javascript">
+var api, apid;
+$('.a-secciones').click(function(e) {
+  e.preventDefault();
+    var href = this.href;
+    if(e.target.id == 'galeria')
+  {
+      console.log('ewefe')
+  }
+  else{
+
+    $("#menu-galeria").removeClass("animated slideInDown");
+    $("#menu-galeria").addClass("animated slideOutUp");
+    setTimeout(function(){
+    window.location = href;
+    }, 200);
+  }
+
+  });
+$(document).ready(function(){
+
+$('#gallery_2').fadeIn(2500)
+apid = $("#gallery_2").unitegallery({
+  gallery_theme:"tilesgrid",
+  theme_navigation_type: "bullets",
+
+  grid_num_rows:4,
+  tile_width:230,
+  tile_height:230,
+
+  theme_bullets_color: "gray",
+
+  tile_enable_border:true,			//enable border of the tile
+  tile_border_width:0,				//tile border width
+  tile_border_color:"#666666",		//tile border color
+  tile_border_radius:10,		//tile border radius (applied to border only, not to outline)
+
+  tile_enable_shadow:true,			//enable shadow of the tile
+  tile_shadow_h:1,					//position of horizontal shadow
+  tile_shadow_v:1,					//position of vertical shadow
+  tile_shadow_blur:8,			//shadow blur
+  tile_shadow_spread:3,				//shadow spread
+  tile_shadow_color:"#666666",		//shadow color
+
+  tile_enable_overlay: true,			//enable tile color overlay (on mouseover)
+  tile_overlay_opacity: 0.5,			//tile overlay opacity
+  tile_overlay_color: "#666666",		//tile overlay color
+
+  tile_enable_textpanel: true,		 	//enable textpanel
+  tile_textpanel_source: "title",		 	//title,desc,desc_title. source of the textpanel. desc_title - if description empty, put title
+  tile_textpanel_always_on: false,	 	//textpanel always visible
+  tile_textpanel_appear_type: "fade", 	//slide, fade - appear type of the textpanel on mouseover
+  tile_textpanel_position:"inside_bottom", //inside_bottom, inside_top, inside_center, top, bottom the position of the textpanel
+  tile_textpanel_offset:0,			    //vertical offset of the textpanel
+
+  tile_textpanel_padding_top:9,		 	//textpanel padding top
+  tile_textpanel_padding_bottom:9,	 	//textpanel padding bottom
+  tile_textpanel_bg_opacity: 0.75,		 	//textpanel background opacity
+  tile_textpanel_bg_color:"#46C9CC",	 	//textpanel background color
+  tile_textpanel_bg_css:{},			 	//textpanel background css
+
+  tile_textpanel_title_color:"white",		 //textpanel title color. if null - take from css
+  tile_textpanel_title_font_family:"Roboto",	 //textpanel title font family. if null - take from css
+  tile_textpanel_title_text_align:"center",	 //textpanel title text align. if null - take from css
+  tile_textpanel_title_font_size:".5rem",	 //textpanel title font size. if null - take from css
+  tile_textpanel_title_bold:null,			 //textpanel title bold. if null - take from css
+  tile_textpanel_css_title:{},			 //textpanel additional css of the title
+
+
+  lightbox_type: "compact",
+  lightbox_hide_arrows_onvideoplay: true,			//hide the arrows when video start playing and show when stop
+  lightbox_arrows_position: "sides",				//sides, inside: position of the arrows, used on compact type
+  lightbox_arrows_offset: 20,						//The horizontal offset of the arrows
+  lightbox_arrows_inside_offset: 10,				//The offset from the image border if the arrows placed inside
+  lightbox_arrows_inside_alwayson: false,			//Show the arrows on mouseover, or always on.
+
+  lightbox_overlay_color:null,					//the color of the overlay. if null - will take from css
+  lightbox_overlay_opacity:0.8,						//the opacity of the overlay. for compact type - 0.6
+  lightbox_top_panel_opacity: null,				//the opacity of the top panel
+
+  lightbox_show_numbers: true,					//show numbers on the right side
+  lightbox_numbers_size: null,					//the size of the numbers string
+  lightbox_numbers_color: null,					//the color of the numbers
+  lightbox_numbers_padding_top:null,				//the top padding of the numbers (used in compact mode)
+  lightbox_numbers_padding_right:null,			//the right padding of the numbers (used in compact mode)
+
+  lightbox_slider_image_border: true,				//enable border around the image (for compact type only)
+  lightbox_slider_image_border_width: 1,			//image border width
+  lightbox_slider_image_border_color: "#666666",	//image border color
+  lightbox_slider_image_border_radius: 5,			//image border radius
+
+  lightbox_slider_image_shadow: true,				//enable border shadow the image
+  lightbox_slider_control_swipe:true,				//true,false - enable swiping control
+  lightbox_slider_control_zoom:true,				//true, false - enable zooming control
+
+  lightbox_show_textpanel: true,						//show the text panel
+  lightbox_textpanel_width: 600,						//the width of the text panel. wide type only
+
+  lightbox_textpanel_enable_title: true,				//enable the title text
+  lightbox_textpanel_enable_description: true,		//enable the description text
+
+  lightbox_textpanel_padding_top:5,					//textpanel padding top
+  lightbox_textpanel_padding_bottom:20,				//textpanel padding bottom
+  lightbox_textpanel_padding_right: 10,				//cut some space for text from right
+  lightbox_textpanel_padding_left: 0,				//cut some space for text from left
+
+
+  lightbox_textpanel_title_color:null,				//textpanel title color. if null - take from css
+  lightbox_textpanel_title_font_family:"Roboto",			//textpanel title font family. if null - take from css
+  lightbox_textpanel_title_text_align:"center",			//textpanel title text align. if null - take from css
+  lightbox_textpanel_title_font_size:null,			//textpanel title font size. if null - take from css
+  lightbox_textpanel_title_bold:null,					//textpanel title bold. if null - take from css
+  lightbox_textpanel_css_title:{},					//textpanel additional css of the title
+
+  lightbox_textpanel_desc_color:null,					//textpanel description font family. if null - take from css
+  lightbox_textpanel_desc_font_family:"Roboto",			//textpanel description font family. if null - take from css
+  lightbox_textpanel_desc_text_align:"center",			//textpanel description text align. if null - take from css
+  lightbox_textpanel_desc_font_size:null,				//textpanel description font size. if null - take from css
+  lightbox_textpanel_desc_bold:null,					//textpanel description bold. if null - take from css
+  lightbox_textpanel_css_description:{},				//textpanel additional css of the description
+
+
+
+});
+
+api = $("#gallery_1").unitegallery({
+  gallery_theme:"grid",
+
+});
+
+$('#gallery_1').hide()
+
+$('.fu').click(function() {
+      $('#gallery_2').hide()
+      $('#gallery_1').show()
+});
+
+$('.ug-button-fullscreen').click(function() {
+      $('#gallery_1').hide(),
+      $('#gallery_2').fadeIn(3000)
+});
+
+
+
+
+
+//those are the eventws you can use:
+api.on("item_change",function(num, data){		//on item change, get item number and item data
+if(console)
+console.log(data);
+//do something
+});
+api.on("resize",function(){				//on gallery resize
+//do something
+});
+api.on("enter_fullscreen",function(){	//on enter fullscreen
+//do something
+    //gallery_theme:"compact"		//example how to change skin to "compact"
+
+
+});
+api.on("exit_fullscreen",function(){	//on exit fulscreen
+//do something
+//$('.a-secciones').css('border', 'solid 2px red');
+});
+api.on("play",function(){				//on start playing
+//do something
+});
+api.on("stop",function(){				//on stop playing
+//do something
+});
+api.on("pause",function(){				//on pause playing
+//do something
+});
+api.on("continue",function(){			//on continue playing
+//do something
+});
+
+$(".ug-bullet").click(function() {
+
+  $('html, body').animate({
+    scrollTop: $('#menu-galeria').offset().top
+  }, 1000 );
+});
+});
+</script>{% endblock %}

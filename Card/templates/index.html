@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Cardistrict{% endblock %}
+{% block head %}
+  <!-- Bootstrap -->
+  {% load staticfiles %}
+  <link href="{% static 'css/bcss/bootstrap.css' %}" rel="stylesheet">
+  <link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+  <script src="{% static 'css/bootstrap.css.map' %}"></script>
+  <link href="{% static 'css/custom/styles.css' %}" rel="stylesheet">
+  <link href="{% static 'css/animate.css' %}" rel="stylesheet">
+{% endblock %}
+{% block secciones %}
+  <div class="container-fluid bg-blanco1">
+    <div class="row justify-content-center align-items-center hsec2">
+      <a class="btn a-secciones mr-3 clear" id="principal" href="/index/">Principal</a>
+      <a class="btn a-secciones mr-3 clear" id="enciclopedia" href="/enciclopedia/">Enciclopedia</a>
+      <a class="btn a-secciones mr-3 clear" id="galeria" href="/galeria/">Galeria</a>
+      <a class="btn a-secciones mr-3 clear" id="guia" href="/guia/">Guia</a>
+      <a class="btn a-secciones mr-3 clear" id="historia" href="/historia/">Historia</a></div>
+  </div>
+  {% endblock %}
+  {% block body %}
+  <div class="container-fluid bg-blanco2">
+    <div class="container d-flex justify-content-center py-4 animated fadeIn" id="logo">
+      <img class="img-fluid" src="{% static 'img/f1.png' %}" alt="">
+    </div>
+    <div class="container d-flex flex-column align-items-center justify-content-center animated fadeIn" id="titulo-logo" style="height:200px;">
+      <h4>Cardistrict</h4>
+      <div class="col-7 animated fadeIn" id="texto-inicial">
+        <p class="text-justify pt-2">
+          Cardistrict es una pagina de Cardists para Cardists.
+          El objetivo de esta pagina es  proveer un espacio agradable para los Cardists para un buen desarrollo en este arte, a continuacion encontraras los apartados disponibles. <br>Disfrutalo!
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid bg-blanco1 py-5">
+    <div class="container d-flex justify-content-center">
+      <div class="container mr-5 bg-blanco2 ct-index animated fadeInLeft" id="seccion-enciclopedia" style="padding: 3rem 2rem;">
+        <div class="container-fluid" style="text-align: center; margin-top:21px;  margin-bottom:21px;">
+          <img src="{% static 'img/iconos/iEnc.png' %}" alt="">
+        </div>
+        <div class="container d-flex justify-content-center">
+          <a class="btn btn-secciones my-3" href="/enciclopedia/">Enciclopedia</a>
+        </div>
+        <div class="container-fluid">
+          <p class="text-justify">En la enciclopedia encontraras todos los movimientos de Cardistry de manera organizada en donde podras ver la demostracion de cada uno de ellos.                    </p>
+        </div>
+      </div>
+      <div class="container ml-5 bg-blanco2 ct-index animated fadeInRight" id="seccion-galeria" style="padding: 3rem 2rem;">
+        <div class="container-fluid" style="text-align: center; margin-top:46px;  margin-bottom:45px;">
+          <img src="{% static 'img/iconos/iGal.png' %}" alt="">
+        </div>
+        <div class="container d-flex justify-content-center">
+          <a class="btn btn-secciones my-3" href="/galeria/">Galeria</a>
+        </div>
+        <div class="container-fluid">
+          <p class="text-justify">Este es un espacio en donde encontraras fotos relacionadas con Cardistry y en donde la comunidad compartira.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container d-flex justify-content-center my-5">
+      <div class="container mr-5 bg-blanco2 ct-index animated fadeInLeft" id="seccion-guia" style="padding: 3rem 2rem;">
+        <div class="container-fluid" style="text-align: center; margin-top:35px;  margin-bottom:45px;">
+          <img src="{% static 'img/iconos/iGuia.png' %}" alt="">
+        </div>
+        <div class="container d-flex justify-content-center">
+          <a class="btn btn-secciones my-3" href="/guia/">Guia</a>
+        </div>
+        <div class="container-fluid">
+          <p class="text-justify">Se creo este espacio para ayudar a cualquier Cardist de cualquier nivel a conocer habitos y darle eficientes consejos para el con el fin de que tenga un buen progreso en el Cardistry</p>
+        </div>
+      </div>
+      <div class="container ml-5 bg-blanco2 ct-index animated fadeInRight" id="seccion-historia" style="padding: 3rem 2rem;">
+        <div class="container-fluid" style="text-align: center; margin-top:21px;  margin-bottom:21px;">
+          <img src="{% static 'img/iconos/iHistoria.png' %}" alt="">
+        </div>
+        <div class="container d-flex justify-content-center">
+          <a class="btn btn-secciones my-3" href="/historia/">Historia</a>
+        </div>
+        <div class="container-fluid">
+          <p class="text-justify">En esta seccion podras encontrar la historia reciente del Cardistry de una manera sintetizada.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% block script %}
+    <script>
+        $.each($('.a-secciones'), function(i, el){
+            setTimeout(function(){
+
+              $(el).removeClass("clear");
+              $(el).addClass("animated fadeIn");
+            },0 + ( i * 150 ));
+        });
+      $(document).ready(function(){
+
+      });
+    </script>
+  {% endblock %}
+{% endblock %}

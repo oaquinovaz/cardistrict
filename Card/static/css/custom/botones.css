@@ -1,0 +1,191 @@
+.btn-nav-enter {
+  color: white;
+  background-color: transparent;
+  background-image: none;
+  border-color: #f8f9fa;
+  padding: 0.25rem;
+  font-weight: 500;
+  width: 90px;
+  font-size: 1rem;
+  line-height: 1.25;
+  border-radius: 0.3rem; }
+
+.btn-nav-enter:hover {
+  color: #017201;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+  font-weight: 700; }
+
+.btn-nav-enter:focus, .btn-nav.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5); }
+
+.btn-nav-enter.disabled, .btn-nav:disabled {
+  color: #f8f9fa;
+  background-color: transparent; }
+
+.btn-nav-enter:not([disabled]):not(.disabled):active, .btn-nav:not([disabled]):not(.disabled).active,
+.show > .btn-nav.dropdown-toggle {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5); }
+
+.btn-nav-reg {
+  color: black;
+  background-color: white;
+  padding: 0.25rem;
+  width: 90px;
+  font-size: 1rem;
+  line-height: 1.25;
+  border-radius: 0.4rem; }
+
+.btn-nav-reg:hover {
+  color: white;
+  background-color: #4d4d4d; }
+
+.btn-nav-reg:focus, .btn-nav.focus {
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(18, 135, 252, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5); }
+
+.btn-nav-reg.disabled, .btn-nav:disabled {
+  color: #f8f9fa;
+  background-color: transparent; }
+
+.btn-nav-reg:not([disabled]):not(.disabled):active, .btn-nav:not([disabled]):not(.disabled).active,
+.show > .btn-nav.dropdown-toggle {
+  color: #212529;
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+  -webkit-box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(248, 249, 250, 0.5); }
+
+.input-nav {
+  padding: 0.25rem .5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  border-radius: .4rem; }
+
+.a-secciones {
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 300; }
+  .a-secciones:hover {
+    color: #017201; }
+
+.a-categorias {
+  color: white;
+  font-size: 1rem;
+  font-weight: 300; }
+  .a-categorias:hover {
+    color: #4d4d4d; }
+
+.a-temas .nav-link {
+  border-radius: 0.25rem; }
+
+.a-temas .nav-link.active,
+.a-temas .show > .nav-link {
+  color: #11048b;
+  background-color: white; }
+
+.a-temas2 {
+  color: white;
+  text-align: left; }
+  .a-temas2:hover {
+    color: #4d4d4d; }
+
+.btn-secciones {
+  color: #017201;
+  background-color: transparent;
+  border-color: #017201;
+  border-radius: 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  width: 250px; }
+  .btn-secciones:hover {
+    color: white;
+    background-color: #017201;
+    border-radius: 0.75rem;
+    font-weight: 700; }
+
+.btn-contrib {
+  color: white;
+  background-color: transparent;
+  border-color: white;
+  border-radius: 0.4rem;
+  padding: 0.25rem;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 200px; }
+  .btn-contrib:hover {
+    color: #017201;
+    background-color: white;
+    border-radius: 0.4rem;
+    font-weight: 500; }
+
+.btn-mov {
+  color: #017201;
+  background-color: transparent;
+  border-color: #017201;
+  border-radius: 0.4rem;
+  margin: 0rem 1rem 1rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  width: 186px; }
+  .btn-mov:hover {
+    color: white;
+    background-color: #017201;
+    border-radius: 0.4rem;
+    font-weight: 500; }
+
+.enctitulos {
+  color: white;
+  background-color: #e20000;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 400;
+  width: 500px; }
+
+.x-close {
+  color: #4d4d4d;
+  background-color: transparent;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 1.35rem;
+  padding: 0rem; }
+  .x-close:hover {
+    color: #4d4d4d; }
+
+.btn-close {
+  color: white;
+  background-color: #4d4d4d;
+  border-radius: 0.4rem;
+  font-size: 1rem; }
+  .btn-close:hover {
+    background-color: #e20000;
+    border-radius: 0.4rem; }
+
+.btn-contrib-send {
+  color: #11048b;
+  background-color: transparent;
+  border-color: #11048b;
+  border-radius: 0.4rem;
+  font-size: 1rem;
+  font-weight: 400;
+  width: 70px; }
+  .btn-contrib-send:hover {
+    color: white;
+    background-color: #11048b;
+    border-radius: 0.4rem;
+    font-weight: 500; }
+
+.dd-contrib {
+  font-size: 1.2rem;
+  color: #4d4d4d; }
+  .dd-contrib:hover {
+    color: black; }
+  .dd-contrib:active {
+    background-color: #11048b;
+    border-radius: 0.4rem; }
